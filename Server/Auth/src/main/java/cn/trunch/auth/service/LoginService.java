@@ -3,11 +3,14 @@ package cn.trunch.auth.service;
 import cn.trunch.auth.dao.UserDao;
 import cn.trunch.auth.entity.Message;
 import cn.trunch.auth.entity.User;
+import cn.trunch.auth.util.RpcHelper;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 @Service
 @Transactional
@@ -28,9 +31,9 @@ public class LoginService {
         if (null == user) {
             return new Message(202, "登录失败", new User());
         }
-        boolean matched = bCryptPasswordEncoder.matches(userPassword, user.getUserPassword());
+        //boolean matched = bCryptPasswordEncoder.matches(userPassword, user.getUserPassword());
 
-        if (!matched) {
+        if (!userPassword.equals(user.getUserPassword())) {
             return new Message(203, "密码不正确", new User());
         }
         return new Message(200, "登录成功", user);

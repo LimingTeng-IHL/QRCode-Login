@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import axios from 'axios'
@@ -12,11 +13,61 @@ Vue.config.productionTip = false
 Vue.prototype.$ajax = axios
 Vue.prototype.qs = qs
 Vue.use(ElementUI)
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    domain: 'http://localhost:8080',
+    userInfo: {
+      identity: null
+    }
+  },
+  mutations: {
+    updateUserInfo (state, newUserInfo) {
+      state.userInfo = newUserInfo
+    }
+  }
+})
+
+Vue.prototype.setCookie = (cname, value, expiredays) => {
+  var exdate = new Date()
+  exdate.setDate(exdate.getDate() + expiredays)
+  document.cookie = cname + '=' + escape(value) + ((expiredays == null) ? '' : ';expires=' + exdate.toGMTString())
+}
+
+function getCookie (name) {
+  var arr = new RegExp('(^| )' + name + '=([^;]*)(;|$)')
+  var reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)')
+  if (arr === document.cookie.match(reg)) {
+    return (arr[2])
+  } else {
+    return null
+  }
+}
+Vue.prototype.getCookie = getCookie
+
+Vue.prototype.delCookie = (name) => {
+  var exp = new Date()
+  exp.setTime(exp.getTime() - 1)
+  var cval = getCookie(name)
+  if (cval != null) {
+    document.cookie = name + '=' + cval + ';expires=' + exp.toGMTString()
+  }
+}
 
 /* eslint-disable no-new */
 new Vue({
+  data: {},
   el: '#app',
+  render: h => h(App),
   router,
+  store,
+  watch: {
+    '$route': 'checkLogin'
+  },
+  created () {
+    this.checkLogin()
+  },
   components: { App },
   template: '<App/>'
 })

@@ -14,9 +14,9 @@ public class AuthApplicationTests {
     @Autowired
     LoginService loginService;
 
-    @Test
-    public void contextLoads() {
-        loginService.getUserInfo("liming");
-    }
+//    @Test
+//    public void contextLoads() {
+//        loginService.getUserInfo("liming");
+//    }
 
 }

@@ -1,64 +1,25 @@
 <template>
-  <!--  账号输入登录-->
   <div class="login_box">
-    <router-link to="/auth">
+    <router-link to="/input">
       <div class="login_close"></div>
     </router-link>
     <div class="profile_panel">
       <div class="login_title">
-        <img src="../assets/img/logo.png" alt="">
-        <p>IPERSONA</p>
+        <img src="../assets/img/head.png" alt="">
+        <p v-text="'Welcome,' + $store.state.userInfo.identity"></p>
       </div>
-      <label style="margin-top: 50px">Identity：</label>
-      <input v-model="userId" type="tel" pattern="^\d{11}$" title="请输入账号">
-      <label>Password：</label>
-      <input v-model="userPassword" type="password" title="请输入密码">
-      <router-link to="/profile">
-        <input class="bt" @click="login" type="submit" value="Login">
-      </router-link>
-      <label  style="margin-top: 5px" class="register_title">Don't have an account?</label>
-      <router-link to="/register">
-        <input style="margin-top: 1px" class="bt" type="submit" value="Register">
-      </router-link>
+      <div>
+        <img style="margin-top: 50px" src="../assets/img/game.jpg" alt="" width="280" height="150">
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Input',
+  name: 'Profile',
   data () {
-    return {
-      userId: '',
-      userPassword: '',
-      userInfoApi: 'http://localhost/login'// 通过用户ID登录接口
-    }
-  },
-  methods: {
-    login () {
-      this.$ajax({
-        method: 'post',
-        url: this.userInfoApi,
-        data: {
-          'user_id': this.userId,
-          'user_password': this.userPassword
-        }
-      }).then((response) => {
-        // 获取用户信息，登录成功
-        if (response.data.data.userId !== null) {
-          this.$message({
-            message: 'Login Success!',
-            type: 'success'
-          })
-        } else {
-          this.$message({
-            message: 'Login Success!',
-            type: 'success'
-          })
-        }
-        console.log(response.data.data)
-      })
-    }
+
   }
 }
 </script>

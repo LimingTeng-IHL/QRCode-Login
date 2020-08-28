@@ -46,10 +46,10 @@ public class RegisterService {
                 }
 
                 //password encryption
-                String encryptPassword = bCryptPasswordEncoder.encode(password);
+                //String encryptPassword = bCryptPasswordEncoder.encode(password);
 
                 //传入的UserID不存在
-                userDao.addUserInfo(id, encryptPassword, name, email);
+                userDao.addUserInfo(id, password, name, email);
                 User newUser = userDao.getUserInfo(id);
                 return new Message(200, "注册成功", newUser);
             } else {

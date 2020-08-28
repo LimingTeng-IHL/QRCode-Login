@@ -5,7 +5,9 @@
         <img class="login_bg" :src=item alt="用户头像"/>
       </el-carousel-item>
     </el-carousel>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <div class="login_content">
       <p><span class="left-quote"></span><span>iPersona</span></p>
       <p><span></span><span class="right-quote"></span></p>
@@ -20,7 +22,30 @@ export default {
   data () {
     return {
       // bgURL: [require('./assets/img/bg1.jpg'), require('./assets/img/bg2.jpg'), require('./assets/img/bg3.jpg')]
-      bgURL: [require('./assets/img/bg2.jpg')]
+      bgURL: [require('./assets/img/bg2.jpg')],
+      isLogin: false,
+      userInfo: {
+        identity: null
+      },
+      userInfoApi: 'http://localhost/login'// 通过用户ID登录接口
+    }
+  },
+  mounted () {
+    this.getUserInfo()
+  },
+  methods: {
+    getUserInfo () {
+      this.userInfo = {
+        identity: 'Liming'
+      }
+      // ts.$http.get(url, {
+      //   'params': this.userInfo
+      // }).then((response) => {
+      //   if (response.data.code === 200) {
+      //     this.$store.commit('updateUserInfo', this.userInfo)
+      //   }
+      // })
+      this.$store.commit('updateUserInfo', this.userInfo)
     }
   }
 }

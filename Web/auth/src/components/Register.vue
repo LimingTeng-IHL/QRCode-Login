@@ -75,7 +75,9 @@
       <div v-if="active===4">
         <label>Confirm Password：</label>
         <input v-model="passwordConfirm" type="password" title="Please Confirm Password" required>
-        <input class="bt" @click="addUser" type="submit" value="Register">
+        <router-link to="/input">
+          <input class="bt" @click="addUser" type="submit" value="Register">
+        </router-link>
       </div>
 
       <el-button style="margin-top: 12px" @click="next" v-if="active<4">NEXT</el-button>
@@ -323,6 +325,10 @@ export default {
 
   .register_panel .bt:hover {
     background-color: #2f86f6;
+  }
+
+  el-step:before {
+    background: darkred;
   }
 
   ul {
