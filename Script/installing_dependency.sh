@@ -19,5 +19,5 @@ sudo apt install npm
 sudo apt install nodejs
 
 # Install vue
-npm install -g vue-cli 
- 
+npm install -g @vue-cli
+
