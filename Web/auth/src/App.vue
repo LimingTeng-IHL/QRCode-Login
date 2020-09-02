@@ -27,7 +27,7 @@ export default {
       userInfo: {
         identity: null
       },
-      userInfoApi: 'http://74.208.43.28/login'// 通过用户ID登录接口
+      userInfoApi: 'http://localhost/login'// 通过用户ID登录接口
     }
   },
   mounted () {

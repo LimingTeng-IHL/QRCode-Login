@@ -37,10 +37,10 @@ export default {
       userId: '', // 扫码登录的用户ID
       userAvatar: '', // 扫码登录的用户头像
       userName: '', // 扫码登录的用户名
-      tokenApi: 'http://74.208.43.28/auth/token', // 获取口令
-      tokenImgApi: 'http://74.208.43.28/auth/img/', // 获取口令对应的登录码
-      tokenInfoApi: 'http://74.208.43.28/auth/info/', // 获取口令信息
-      userInfoApi: 'http://74.208.43.28/login/getUser' // 获取用户信息
+      tokenApi: 'http://localhost/auth/token', // 获取口令
+      tokenImgApi: 'http://localhost/auth/img/', // 获取口令对应的登录码
+      tokenInfoApi: 'http://localhost/auth/info/', // 获取口令信息
+      userInfoApi: 'http://localhost/login/getUser' // 获取用户信息
     }
   },
   created () {

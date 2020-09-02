@@ -17,7 +17,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    domain: 'http://74.208.43.28:8888',
+    domain: 'http://localhost:8888',
     userInfo: {
       identity: null
     }
