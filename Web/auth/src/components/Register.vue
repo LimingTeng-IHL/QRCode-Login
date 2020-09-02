@@ -108,7 +108,7 @@ export default {
       passwordConfirm: '',
       secureLength: 8,
       userInfoApi: 'http://localhost/register',
-      emailVerifyApi: 'http://localhost/mail',
+      emailVerifyApi: 'http://localhost:8888/mail',
       reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     }
   },
