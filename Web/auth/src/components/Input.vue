@@ -31,7 +31,7 @@ export default {
     return {
       userId: '',
       userPassword: '',
-      userInfoApi: 'http://localhost/login'// 通过用户ID登录接口
+      userInfoApi: 'http://74.208.43.28/login'// 通过用户ID登录接口
     }
   },
   methods: {
